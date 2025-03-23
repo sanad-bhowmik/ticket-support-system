@@ -47,34 +47,41 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($tickets as $ticket)
+                            @foreach ($tickets as $index => $ticket)
                             <tr class="border-b hover:bg-gray-50">
-                                <td class="py-3 px-4 md:px-6 text-sm">{{ $ticket->id }}</td>
+                                <!-- Display Index Number Instead of Ticket ID -->
+                                <td class="py-3 px-4 md:px-6 text-sm">{{ $index + 1 }}</td>
+
                                 <td class="py-3 px-4 md:px-6 text-sm">{{ $ticket->subject }}</td>
                                 <td class="py-3 px-4 md:px-6 text-sm">{{ $ticket->category }}</td>
                                 <td class="py-3 px-4 md:px-6 text-sm">
-                                    <span class="bg-yellow-500 text-white px-2 py-1 rounded text-xs md:text-sm">{{ $ticket->priority }}</span>
+                                    <span class="bg-yellow-500 text-white px-2 py-1 rounded text-xs md:text-sm">
+                                        {{ $ticket->priority }}
+                                    </span>
                                 </td>
 
                                 <!-- Status Column -->
                                 <td class="py-3 px-4 md:px-6 text-sm">
                                     <span class="px-3 py-1 text-sm font-semibold rounded-full
-                    {{ $ticket->status === 'Open' ? 'bg-blue-100 text-blue-700' :
-                    ($ticket->status === 'In Progress' ? 'bg-yellow-100 text-yellow-700' :
-                    ($ticket->status === 'Resolved' ? 'bg-green-100 text-green-700' :
-                    'bg-gray-100 text-gray-700')) }}">
+                {{ $ticket->status === 'Open' ? 'bg-blue-100 text-blue-700' :
+                ($ticket->status === 'In Progress' ? 'bg-yellow-100 text-yellow-700' :
+                ($ticket->status === 'Resolved' ? 'bg-green-100 text-green-700' :
+                'bg-gray-100 text-gray-700')) }}">
                                         {{ $ticket->status }}
                                     </span>
                                 </td>
 
                                 <!-- Actions Column -->
                                 <td class="py-3 px-4 md:px-6 text-sm space-x-1">
-                                    <!-- Conditionally hide buttons when status is Closed -->
                                     @if($ticket->status !== 'Closed')
-                                    <button class="text-black px-3 py-1 md:px-4 md:py-2 rounded" onclick="openEditModal({{ $ticket->id }}, '{{ $ticket->subject }}', '{{ $ticket->description }}')" title="edit">
+                                    <button class="text-black px-3 py-1 md:px-4 md:py-2 rounded"
+                                        onclick="openEditModal({{ $ticket->id }}, '{{ $ticket->subject }}', '{{ $ticket->description }}')"
+                                        title="Edit">
                                         <img src="{{ asset('img/pen.png') }}" alt="Edit" class="w-8 h-8">
                                     </button>
-                                    <button class="text-black px-3 py-1 md:px-4 md:py-2 rounded " onclick="openDeleteModal({{ $ticket->id }})" title="delete">
+                                    <button class="text-black px-3 py-1 md:px-4 md:py-2 rounded"
+                                        onclick="openDeleteModal({{ $ticket->id }})"
+                                        title="Delete">
                                         <img src="{{ asset('img/bin.png') }}" alt="Delete" class="w-8 h-8">
                                     </button>
                                     @endif
@@ -82,7 +89,6 @@
 
                                 <!-- Chat Column -->
                                 <td class="py-3 px-4 md:px-6 text-sm space-x-2">
-                                    <!-- Pass ticket id to messages route -->
                                     @if($ticket->status !== 'Closed')
                                     <a href="{{ route('messages.show', ['ticket_id' => $ticket->id]) }}">
                                         <button class="px-3 py-1 md:px-4 md:py-2 rounded" title="Chat">
@@ -90,13 +96,13 @@
                                         </button>
                                     </a>
                                     @else
-                                    <!-- Chat button hidden if status is Closed -->
                                     <span class="text-gray-500">Chat Disabled</span>
                                     @endif
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
+
                     </table>
 
                 </div>

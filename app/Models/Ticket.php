@@ -24,4 +24,9 @@ class Ticket extends Model
 
     // If you're using timestamps, you can enable this, or you can disable it by setting to false
     public $timestamps = true;
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
 }

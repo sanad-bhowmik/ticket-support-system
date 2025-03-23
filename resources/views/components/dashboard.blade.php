@@ -12,17 +12,29 @@
     @include('partials.nav') <!-- Sidebar component -->
     <div class="flex min-h-screen">
 
-        <!-- Sidebar (fixed and responsive) -->
-        @include('partials.sideNav') <!-- Sidebar component -->
+        @include('partials.sideNav')
 
-        <!-- Main Content -->
-        <div class="flex-1 p-6 ml-0 md:ml-64 transition-all duration-300 ease-in-out">
-            <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-2xl">
-                <h2 class="text-3xl font-bold text-center text-blue-600 mb-4">Welcome to the Dashboard</h2>
-                <p class="text-gray-700 text-lg">This is your dashboard. You can add more functionality here.</p>
+        <div class="flex-1 p-6 ml-0  transition-all duration-300 ease-in-out">
+            <h2 class="text-3xl font-bold text-blue-600 mb-8">Welcome to the Dashboard</h2>
+
+            <div class="bg-white p-8 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold text-gray-700 mb-4">Overview</h3>
+                <p class="text-gray-600">
+                    This is your dashboard. You can add more functionality or content here as needed.
+                </p>
+            </div>
+
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-4">Recent Activity</h3>
+                    <p class="text-gray-600">
+                        No recent activity to display.
+                    </p>
+                </div>
+
+
             </div>
         </div>
-
     </div>
 
     <script src="//unpkg.com/alpinejs" defer></script>

@@ -10,10 +10,11 @@
     </div>
 
     <!-- Sidebar (Fixed on Desktop, Toggleable on Mobile) -->
-    <div :class="open ? 'translate-x-0' : '-translate-x-full'" class="fixed inset-0 z-50 md:relative md:translate-x-0 md:w-64 bg-blue-800 text-white h-full transition-transform duration-300 ease-in-out transform shadow-2xl">
+    <div :class="open ? 'translate-x-0' : '-translate-x-full md:translate-x-0'"
+         class="fixed inset-y-0 left-0 z-50 md:relative md:translate-x-0 md:w-64 bg-gray-800 text-white h-full transition-transform duration-300 ease-in-out transform shadow-2xl">
         <div class="flex flex-col h-full">
             <!-- Logo/Brand -->
-            <div class="flex items-center justify-between p-6 bg-blue-900">
+            <div class="flex items-center justify-between p-6 bg-gray-900">
                 <h2 class="text-2xl font-semibold">Dashboard</h2>
                 <button @click="open = false" class="md:hidden text-white focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -47,15 +48,6 @@
                                 <span>Ticket</span>
                             </a>
                         </li>
-                        <!-- <li>
-                            <a href="" class="flex items-center py-3 px-4 rounded-lg hover:bg-blue-700 transition duration-200 ease-in-out
-                                {{ Request::routeIs('messages') ? 'bg-blue-900' : '' }}">
-                                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
-                                </svg>
-                                <span>Message</span>
-                            </a>
-                        </li> -->
                     @endif
 
                     <!-- Links for Role ID 1 -->
@@ -70,12 +62,12 @@
                             </a>
                         </li>
                         <li>
-                            <a href="" class="flex items-center py-3 px-4 rounded-lg hover:bg-blue-700 transition duration-200 ease-in-out
-                                {{ Request::routeIs('admin.messages') ? 'bg-blue-900' : '' }}">
+                            <a href="{{ route('messages.index') }}" class="flex items-center py-3 px-4 rounded-lg hover:bg-blue-700 transition duration-200 ease-in-out
+                                {{ Request::routeIs('messages.index') ? 'bg-blue-900' : '' }}">
                                 <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
                                 </svg>
-                                <span>Admin Message</span>
+                                <span>User Message's</span>
                             </a>
                         </li>
                     @endif
@@ -83,8 +75,8 @@
             </div>
 
             <!-- Footer (Optional) -->
-            <div class="p-4 bg-blue-900 text-center text-sm">
-                <p>&copy; 2023 Your Company</p>
+            <div class="p-4 bg-gray-900 text-center text-sm">
+                <p>&copy; Sanad bhowmik</p>
             </div>
         </div>
     </div>
